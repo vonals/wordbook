@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
     private void initCat(){
+
         for(int i=0;i<1;i++){
             Cat Q=new Cat("Q",R.drawable.ic_launcher_foreground);
             cats.add(Q);
