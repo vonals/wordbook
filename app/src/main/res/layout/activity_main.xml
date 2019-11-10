@@ -11,13 +11,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
     </fragment>
-    <fragment
-        android:id="@+id/right_fragment"
-        android:name="com.example.wordbook.RightFragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-    </fragment>
 
 
 
