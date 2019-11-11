@@ -19,7 +19,13 @@ public class CatAdapter extends ArrayAdapter<Cat> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Cat cat=getItem(position);
-        View view= LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
+        View view;
+        if(convertView==null){
+            view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
+        }else{
+            view=convertView;
+        }
+
         ImageView catImage=(ImageView)view.findViewById(R.id.cat_image);
         TextView catName=(TextView)view.findViewById(R.id.cat_name);
         catName.setText(cat.getName());
