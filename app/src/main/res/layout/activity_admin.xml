@@ -5,13 +5,19 @@
     android:layout_height="match_parent"
     >
     <Button
-        android:id="@+id/Admin_bt1"
+        android:id="@+id/Admin_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add"
+        />
+    <Button
+        android:id="@+id/Admin_new"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="new"
         />
     <Button
-        android:id="@+id/Admin_bt2"
+        android:id="@+id/Admin_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="back"

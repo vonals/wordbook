@@ -5,10 +5,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<Cat> cats=new ArrayList<>();
+    private DatabaseHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +40,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //横屏判断
         final Configuration mConfiguration = this.getResources().getConfiguration();
         final int ori=mConfiguration.orientation;
+        dbHelper=new DatabaseHelper(this,"CatShop.db",null,7);
+        Button de_button=(Button)findViewById(R.id.left_fragment_search);
         initCat();
         final CatAdapter adapter=new CatAdapter(MainActivity.this,R.layout.cat_item,cats);
-//        ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,data);
+        Button buttonA=(Button)findViewById(R.id.left_fragment_add);
+        Button buttonS=(Button)findViewById(R.id.left_fragment_search);
+        buttonA.setOnClickListener(this);
+        buttonS.setOnClickListener(this);
+
         ListView listView=(ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -81,6 +92,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent=new Intent(MainActivity.this,Admin.class);
                 startActivity(intent);
                 break;
+            case R.id.mnue_Create:
+                dbHelper.getWritableDatabase();
+                Log.d("min","创建内");
+                break;
             //帮助
             case R.id.mnue_Help:
                 AlertDialog.Builder dialog=new AlertDialog.Builder(MainActivity.this);
@@ -101,14 +116,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
                 dialog.show();
                 break;
+
         }
         return false;
     }
 
+
     @Override
     public void onClick(View v){
-        switch (v.getId()){
 
+        switch (v.getId()){
+            case R.id.left_fragment_add:
+                SQLiteDatabase db=dbHelper.getWritableDatabase();
+                ContentValues values=new ContentValues();
+                values.put("name","cat");
+                values.put("sentence","I love cat!");
+                db.insert("CAT",null,values);
+                Log.d("min","add success");
+                break;
+            case R.id.left_fragment_search:
+                SQLiteDatabase db1=dbHelper.getWritableDatabase();
+                Cursor cursor=db1.query("CAT",null,null,null,null,null,null);
+               if(cursor.moveToFirst()){
+                   do{
+                       String name=cursor.getString(cursor.getColumnIndex("name"));
+                       String sentence=cursor.getString(cursor.getColumnIndex("sentence"));
+                       Log.d("min","name"+name);
+                       Log.d("min","sentence"+sentence);
+                   }while(cursor.moveToNext());
+               }
+               cursor.close();
+                break;
         }
     }
 }
