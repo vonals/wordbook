@@ -4,12 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/left_fragment_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isd"/>
+    <Button
+        android:id="@+id/left_fragment_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="search"
+        />
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/gray"
-
         />
 
 

@@ -5,7 +5,7 @@
         android:title="管理"
         />
     <item
-        android:id="@+id/ADD"
-        android:title="拉长菜单"
+        android:id="@+id/mnue_Help"
+        android:title="帮助"
         />
 </menu>

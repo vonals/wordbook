@@ -28,7 +28,12 @@ public class CatAdapter extends ArrayAdapter<Cat> {
 
         ImageView catImage=(ImageView)view.findViewById(R.id.cat_image);
         TextView catName=(TextView)view.findViewById(R.id.cat_name);
+        TextView catSentence=(TextView)view.findViewById(R.id.cat_sentence);
+        TextView catMeaning=(TextView)view.findViewById(R.id.cat_meaning);
+        catImage.setImageResource(cat.getImageId());
         catName.setText(cat.getName());
+        catSentence.setText(cat.getSentence());
+        catMeaning.setText(cat.getMeaning());
         return view;
     }
 }
