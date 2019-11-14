@@ -9,6 +9,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static  final String CREATE_CAT ="create table CAT("
             +"id integer primary key autoincrement,"
             +"name text,"
+            +"meaning text,"
             +"sentence text)";
 
     private Context mContext;

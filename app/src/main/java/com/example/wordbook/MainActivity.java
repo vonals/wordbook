@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //横屏判断
         final Configuration mConfiguration = this.getResources().getConfiguration();
         final int ori=mConfiguration.orientation;
-        dbHelper=new DatabaseHelper(this,"CatShop.db",null,7);
-        Button de_button=(Button)findViewById(R.id.left_fragment_search);
-        initCat();
-        final CatAdapter adapter=new CatAdapter(MainActivity.this,R.layout.cat_item,cats);
-        Button buttonA=(Button)findViewById(R.id.left_fragment_add);
+        dbHelper=new DatabaseHelper(this,"CatShop.db",null,9);
+        //临时测试按钮
         Button buttonS=(Button)findViewById(R.id.left_fragment_search);
-        buttonA.setOnClickListener(this);
         buttonS.setOnClickListener(this);
-
+        //初始化list数组
+        initCat();
+        //设置数组响应器
+        final CatAdapter adapter=new CatAdapter(MainActivity.this,R.layout.cat_item,cats);
+        //listview操作部分
         ListView listView=(ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Cat cat = cats.get(position);
                 if(ori==mConfiguration.ORIENTATION_LANDSCAPE){
-                    //找到操作的碎片
-//                    RightFragment rightFragment=(RightFragment)getSupportFragmentManager().findFragmentById(R.id.left_fragment);
+
                     TextView textView=(TextView)findViewById(R.id.right_fragment_text);
                     textView.setText(cat.getName());
                 }
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void initCat(){
 
-        for(int i=0;i<4;i++){
+        for(int i=0;i<1;i++){
             Cat C=new Cat("Cat",R.drawable.ic_launcher_foreground,"猫","I have a cat.");
             cats.add(C);
             Cat D=new Cat("Dog",R.drawable.ic_launcher_foreground,"狗","She is my angle.");
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.mnue_Create:
-                dbHelper.getWritableDatabase();
+
                 Log.d("min","创建内");
                 break;
             //帮助
@@ -126,26 +125,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v){
 
         switch (v.getId()){
-            case R.id.left_fragment_add:
-                SQLiteDatabase db=dbHelper.getWritableDatabase();
-                ContentValues values=new ContentValues();
-                values.put("name","cat");
-                values.put("sentence","I love cat!");
-                db.insert("CAT",null,values);
-                Log.d("min","add success");
-                break;
+
             case R.id.left_fragment_search:
                 SQLiteDatabase db1=dbHelper.getWritableDatabase();
                 Cursor cursor=db1.query("CAT",null,null,null,null,null,null);
                if(cursor.moveToFirst()){
                    do{
                        String name=cursor.getString(cursor.getColumnIndex("name"));
+                       String meaning=cursor.getString(cursor.getColumnIndex("meaning"));
                        String sentence=cursor.getString(cursor.getColumnIndex("sentence"));
-                       Log.d("min","name"+name);
-                       Log.d("min","sentence"+sentence);
+                       Log.d("mint","name:"+name);
+                       Log.d("mint","meaning:"+meaning);
+                       Log.d("mint","sentence:"+sentence);
+                       Cat C=new Cat("Cat",R.drawable.ic_launcher_foreground,"猫","I have a cat.");
+                       cats.add(C);
                    }while(cursor.moveToNext());
                }
-               cursor.close();
+                final CatAdapter adapter=new CatAdapter(MainActivity.this,R.layout.cat_item,cats);
+                //listview操作部分
+                ListView listView=(ListView)findViewById(R.id.list);
+                listView.setAdapter(adapter);
+                cursor.close();
                 break;
         }
     }
