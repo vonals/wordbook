@@ -4,6 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <EditText
+        android:id="@+id/word_zero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search:"
+        />
+    <EditText
+        android:id="@+id/word_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Word:"
+        />
+    <EditText
+        android:id="@+id/word_meaning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meaning:"
+        />
+    <EditText
+        android:id="@+id/word_centence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Centence:"
+        />
     <Button
         android:id="@+id/Admin_add"
         android:layout_width="match_parent"
@@ -11,10 +35,16 @@
         android:text="add"
         />
     <Button
-        android:id="@+id/Admin_new"
+        android:id="@+id/Admin_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="new"
+        android:text="delete"
+        />
+    <Button
+        android:id="@+id/Admin_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="edit"
         />
     <Button
         android:id="@+id/Admin_back"
