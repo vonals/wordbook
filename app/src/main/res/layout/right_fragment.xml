@@ -11,7 +11,22 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_gravity="center_horizontal"
-        android:text="This is Right fragment"
+        android:text="Word"
         />
-
+    <TextView
+        android:id="@+id/right_fragment_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Meaning"
+        />
+    <TextView
+        android:id="@+id/right_fragment_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Sentence"
+        />
 </LinearLayout>

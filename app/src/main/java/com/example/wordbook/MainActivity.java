@@ -4,8 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
-import android.content.ContentValues;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -13,14 +12,13 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,22 +26,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -78,7 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(ori==mConfiguration.ORIENTATION_LANDSCAPE){
 
                     TextView textView=(TextView)findViewById(R.id.right_fragment_text);
+                    TextView textView1=(TextView)findViewById(R.id.right_fragment_text1);
+                    TextView textView2=(TextView)findViewById(R.id.right_fragment_text2);
                     textView.setText(cat.getName());
+                    textView1.setText(cat.getMeaning());
+                    textView2.setText(cat.getSentence());
                 }
                 Toast.makeText(MainActivity.this, cat.getName(), Toast.LENGTH_SHORT).show();
             }
@@ -168,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
 
             case R.id.left_fragment_search:
+                //清空列表
                 cats.clear();
                 EditText editText=(EditText)findViewById(R.id.left_fragment_text);
                 String str=editText.getText().toString();
