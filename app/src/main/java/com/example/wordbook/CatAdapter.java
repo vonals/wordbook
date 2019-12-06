@@ -1,6 +1,7 @@
 package com.example.wordbook;
 
 import android.content.Context;
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,8 @@ public class CatAdapter extends ArrayAdapter<Cat> {
         TextView catMeaning=(TextView)view.findViewById(R.id.cat_meaning);
         catImage.setImageResource(cat.getImageId());
         catName.setText(cat.getName());
+        TextPaint paint =  catName.getPaint();
+        paint.setFakeBoldText(true);//字体加粗
         catSentence.setText(cat.getSentence());
         catMeaning.setText(cat.getMeaning());
         return view;

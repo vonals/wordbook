@@ -13,6 +13,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import android.text.TextPaint;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonS=(Button)findViewById(R.id.left_fragment_search);
         buttonS.setOnClickListener(this);
         EditText editText = (EditText) findViewById(R.id.left_fragment_text);
-        editText.setText("search");
+
         //初始化list数组
         initCat();
         //设置数组响应器
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     TextView textView1=(TextView)findViewById(R.id.right_fragment_text1);
                     TextView textView2=(TextView)findViewById(R.id.right_fragment_text2);
                     textView.setText(cat.getName());
+                    TextPaint paint =  textView.getPaint();
+                    paint.setFakeBoldText(true);//字体加粗
                     textView1.setText(cat.getMeaning());
                     textView2.setText(cat.getSentence());
                 }

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Admin extends AppCompatActivity implements View.OnClickListener{
 
@@ -58,6 +59,7 @@ public class Admin extends AppCompatActivity implements View.OnClickListener{
                 values.put("sentence",editText3.getText().toString());
                 db.insert("CAT",null,values);
                 Log.d("mint","add success");
+                Toast.makeText(Admin.this,"Add success",Toast.LENGTH_SHORT).show();
                 break;
             //更新词条（未来应该是搜索的）
             case R.id.Admin_edit:
@@ -85,6 +87,7 @@ public class Admin extends AppCompatActivity implements View.OnClickListener{
                db1.update("CAT",values1,"name=?",new String[]{str0});
                 Log.d("mint","有"+str0+"   "+str1+"    ");
                 }
+                Toast.makeText(Admin.this,"Update success",Toast.LENGTH_SHORT).show();
                 break;
                 //找名字删
             case R.id.Admin_delete:
@@ -92,6 +95,7 @@ public class Admin extends AppCompatActivity implements View.OnClickListener{
                 if(!editText0.getText().toString().equals("")){
                     String str=editText0.getText().toString();
                     db2.delete("Cat","name=?",new String[]{str});
+                    Toast.makeText(Admin.this,"Delete success",Toast.LENGTH_SHORT).show();
                     Log.d("mint","有删");
                 }
 
