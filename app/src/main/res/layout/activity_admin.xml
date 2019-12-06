@@ -8,25 +8,25 @@
         android:id="@+id/word_zero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search:"
+        android:hint="Search:"
         />
     <EditText
         android:id="@+id/word_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Word:"
+        android:hint="Word:"
         />
     <EditText
         android:id="@+id/word_meaning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Meaning:"
+        android:hint="Meaning:"
         />
     <EditText
         android:id="@+id/word_centence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Centence:"
+        android:hint="Centence:"
         />
     <Button
         android:id="@+id/Admin_add"
